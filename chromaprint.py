@@ -44,8 +44,9 @@ def _load_library(name):
 
 
 for name in _guess_lib_name():
-    _libchromaprint = _load_library(name)
-    if _libchromaprint:
+    loaded = _load_library(name)
+    if loaded:
+        _libchromaprint = loaded
         break
 else:
     raise ImportError("couldn't find libchromaprint")
