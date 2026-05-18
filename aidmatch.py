@@ -54,4 +54,8 @@ def aidmatch(filename):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: aidmatch.py <path>")
+        sys.exit(1)
+
     aidmatch(sys.argv[1])
