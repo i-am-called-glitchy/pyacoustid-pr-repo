@@ -148,7 +148,7 @@ def _check(res):
 
 class Fingerprinter:
     def __init__(self, algorithm: Algorithms = ALGORITHM_DEFAULT):
-        self._ctx = _libchromaprint.chromaprint_new(algorithm)
+        self._ctx = _libchromaprint.chromaprint_new(algorithm.value)
 
     def __del__(self):
         _libchromaprint.chromaprint_free(self._ctx)
@@ -234,7 +234,7 @@ def encode_fingerprint(fingerprint: bytes, algorithm: Algorithms, base64: bool =
         _libchromaprint.chromaprint_encode_fingerprint(
             fp_array,
             len(fingerprint),
-            algorithm,
+            algorithm.value,
             ctypes.byref(result_ptr),
             ctypes.byref(result_size),
             1 if base64 else 0,
